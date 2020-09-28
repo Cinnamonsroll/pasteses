@@ -1,6 +1,6 @@
 {
   
-  "url": "mongodb+srv://Summer:scotland217@cluster0.qjfsh.mongodb.net/pastebin?retryWrites=true&w=majority", 
-  "id": "760224869782126636",
-  "token": "6icLMan03luvfs9-BAH1-CrolxYmLPIHja2BvW8fBu0a_0Jq-4AJctCcvcKwUD5HJ0rd" 
+  "url": "mongo db url", 
+  "id": "webhook id",
+  "token": "webhook token" 
 }
