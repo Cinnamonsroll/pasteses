@@ -21,16 +21,16 @@ router.post("/new", async (req, res) => {
     let token = config.token;
     const webhookClient = new Discord.WebhookClient(id, token);
     let codee = code;
-    if (codee.length >= 1000) {
-      codee = codee.substring(0, codee.length - 5) + "...";
+    if (codee.length >= 2000) {
+      codee = codee.slice(0, 2000) + (codee.length >= 1000 ? "..." : "");
     }
+
     let embed = new Discord.MessageEmbed()
       .setColor("#FF9966")
       .setTitle(title)
-      .setDescription(
-        `Language: ${language}\n Description: ${req.body.description ||
-          "No description"}\n\n Code: \`\`\`${codee}\`\`\``
-      )
+      .addField("language", language, true)
+      .addField("Description", req.body.description || "No description", true)
+      .setDescription(`\`\`\`${codee}\`\`\``)
       .setFooter("created through api");
     webhookClient.send({
       embeds: [embed]
