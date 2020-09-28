@@ -1,0 +1,84 @@
+<%- include("header") %>
+
+
+
+<div class="card">
+  <div class="row">
+    <div class="col-sm-5">
+      <label for="paste_title" class="text-center" style="color: white;"
+        >Title</label
+      >
+      <div class="input-group">
+        <input
+          type="text"
+          class="in form-control bg-dark"
+          id="paste_title"
+          name="paste_title"
+          placeholder="Title"
+          maxlength="50"
+          autocomplete="off"
+          required
+          value="<%= title %>"
+          readonly
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">
+      <label for="paste_title" class="text-center" style="color: white;"
+        >Description</label
+      >
+      <div class="input-group">
+        <textarea
+          placeholder="Description"
+          name="description"
+          class="area form-control bg-dark"
+          readonly
+        >
+<%= description %></textarea
+        >
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <pre
+    class="line-numbers language-<%= language %>"
+  ><code class="language-<%= language %>"><%= code %><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</div>
+
+<style>
+  .card {
+    border: none;
+    background-color: transparent;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .in {
+    border: none;
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+  }
+  .in:focus {
+    border: 1px solid #ff9966;
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+  }
+  .area {
+    border: none;
+    color: white;
+  }
+  .area:focus {
+    border: 1px solid #ff9966;
+    color: white;
+  }
+  body {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+</style>
+

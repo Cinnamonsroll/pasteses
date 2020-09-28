@@ -1,0 +1,624 @@
+<%- include("header") %>
+<title>Copies</title>
+<section>
+  <pre class="syntax-hilite light" lang="js" data-select="Select code" data-empty="No code to highlight." data-mode="Switch display mode" data-scrollbar="dark">
+    <textarea class="syntax" >
+const nodefetch = require('node-fetch')
+  nodefetch(`https://pasteses.glitch.me/api/new`, {
+    method: 'POST',
+    body: JSON.stringify({
+      title: "YOUR TITLE HERE",
+      code: "YOUR CODE HERE",
+      description:"NOT REQUIRED"
+      lang: "LANGUAGE",
+    }),
+    headers: { 'Content-Type': 'application/json' }
+  }).then(c => 
+  c.json()
+  )
+  .then(c => 
+  console.log(c)
+  ).catch(err => 
+  console.log(err)
+  )
+    </textarea>
+  </pre>
+</section>
+
+<style>
+  /* Presentation style in document for the sake of pen SCSS import */
+  html {
+    width: 100%;
+  }
+
+  body {
+    background-color: #E;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  section {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 50vh;
+  }
+
+  section pre {
+    position: relative;
+    height: 338px;
+    width: 100%;
+    display: inline-block;
+  }
+
+  section pre textarea,
+  section pre code {
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    top: 0;
+    display: inline-block;
+  }
+
+  #editor {
+    height: auto;
+
+  }
+
+  body {
+    background-color: #000000
+  }
+
+  h1 {
+    color: white;
+  }
+
+  #t {
+    color: white;
+  }
+
+  .full {
+    color: white;
+  }
+
+  .clicks {
+    color: white;
+  }
+
+  .short {
+    color: white;
+  }
+
+  #clickCount {
+    color: white;
+  }
+
+  .syntax-hilite-wrapper {
+    position: relative;
+    font-size: 12.5px;
+  }
+
+  .syntax-hilite-wrapper:hover .copy {
+    opacity: 1;
+  }
+
+  .syntax-hilite-wrapper .copy {
+    position: absolute;
+    right: 0.75rem;
+    top: 2.25em;
+    display: block;
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    font-size: 1.2em;
+    color: #999;
+    text-align: center;
+    background: rgba(153, 153, 153, 0);
+    opacity: 0;
+    cursor: pointer;
+    text-indent: -9999em;
+    pointer-events: all;
+    transition: all 0.2s linear;
+    z-index: 1;
+  }
+
+  .syntax-hilite-wrapper .copy:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+
+  .syntax-hilite-wrapper .copy:active {
+    opacity: 0;
+  }
+
+  .syntax-hilite-wrapper .copy::before,
+  .syntax-hilite-wrapper .copy::after {
+    position: absolute;
+    right: 0.8em;
+    top: 0.7em;
+    content: ' ';
+    display: inline-block;
+    width: 0.5em;
+    height: 0.8em;
+    color: inherit;
+    border: 0;
+    border: 1px solid currentColor;
+    background: rgba(155, 155, 155, 0.5);
+    z-index: -1;
+  }
+
+  .syntax-hilite-wrapper .copy::after {
+    right: 0.6em;
+    top: 0.5em;
+    background: currentColor;
+  }
+
+  .syntax-hilite-wrapper .light~.mode::before {
+    background-color: #f0f0f0 !important;
+  }
+
+  .syntax-hilite-wrapper .mode {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    display: block;
+    overflow: visible;
+    width: 3em;
+    height: 1.5em;
+    font-size: 1em;
+    background-color: rgba(153, 153, 153, 1);
+    border-radius: 0.75em;
+    border: 0;
+    box-shadow: none;
+    cursor: pointer !important;
+    opacity: 0.5;
+    transition: all 0.2s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    z-index: 2;
+  }
+
+  .syntax-hilite-wrapper .mode:hover {
+    opacity: 1;
+  }
+
+  .syntax-hilite-wrapper .mode:focus {
+    box-shadow: 0 0 0 0.05em #999;
+    outline: 0;
+  }
+
+  .syntax-hilite-wrapper .mode:active {
+    box-shadow: 0 0 0 0.05em #fff;
+  }
+
+  .syntax-hilite-wrapper .mode:checked {
+    box-shadow: inset 0 0 0 1em #234;
+  }
+
+  .syntax-hilite-wrapper .mode:checked:focus {
+    box-shadow: 0 0 0 0.05em #fff;
+  }
+
+  .syntax-hilite-wrapper .mode:checked:active {
+    box-shadow: 0 0 0 0.05em #fff;
+  }
+
+  .syntax-hilite-wrapper .mode:checked::before {
+    left: 1.6em;
+  }
+
+  .syntax-hilite-wrapper .mode::before,
+  .syntax-hilite-wrapper .mode::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    pointer-events: all;
+  }
+
+  .syntax-hilite-wrapper .mode::before {
+    top: 0.15em;
+    left: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 50%;
+    background-color: #234;
+    z-index: 3;
+  }
+
+  .syntax-hilite-wrapper .mode::after {
+    width: 150%;
+    height: 175%;
+    top: -37.5%;
+    left: -25%;
+    z-index: -1;
+    cursor: default;
+  }
+
+  .syntax-hilite {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0 1px 17px -2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    overflow-y: auto;
+    white-space: normal;
+  }
+
+  .syntax-hilite::after,
+  .syntax-hilite::before {
+    content: ' ';
+    position: absolute;
+    display: inline-block;
+    color: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px rgba(125, 125, 125, .0);
+    background: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+  }
+
+  .syntax-hilite::before {
+    content: attr(data-content);
+    top: 0;
+    right: 0;
+    text-transform: uppercase;
+    padding: 0.5em 1em;
+    border-radius: 0 0.2em 0 0.2em;
+  }
+
+  .syntax-hilite::after {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(125, 125, 125, 0.1);
+    width: 3em;
+    min-height: 100%;
+  }
+
+  .syntax-hilite:empty::after,
+  .syntax-hilite.loading::after {
+    content: attr(data-empty);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    border-radius: 1.5em;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 0.75em 2em;
+    line-height: 1.5em;
+    overflow: hidden;
+    min-width: 12em;
+    max-width: 320px;
+  }
+
+  .syntax-hilite .syntax {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    height: auto;
+    min-height: 6em;
+    padding: 1rem 1rem 1rem 4em;
+    margin: 0;
+    background-color: #234;
+    color: #999;
+    font-size: inherit;
+    font-family: 'Consolas', 'Monaco', Courier New, Courier, monospace;
+    outline: 0;
+    border: 0;
+    overflow: visible;
+    counter-reset: step;
+    resize: none;
+    word-spacing: normal;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    z-index: 1;
+  }
+
+  .syntax-hilite .syntax.light {
+    background-color: #f0f0f0;
+    color: #777;
+  }
+
+  .syntax-hilite .syntax+.syntax,
+  .syntax-hilite .syntax+code,
+  .syntax-hilite .syntax+textarea {
+    display: none;
+  }
+
+  .syntax-hilite .syntax::selection,
+  .syntax-hilite .syntax *::selection {
+    background-color: rgba(125, 125, 125, 0.25);
+    color: inherit;
+  }
+
+  .syntax-hilite .syntax::-moz-selection,
+  .syntax-hilite .syntax *::-moz-selection {
+    background-color: rgba(125, 125, 125, 0.25);
+    color: inherit;
+  }
+
+  .syntax-hilite .syntax em {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-style: normal;
+    white-space: pre-wrap;
+    text-wrap: nowrap;
+    tab-size: 4;
+    z-index: 1;
+    transition: all 0.15s linear;
+    cursor: default;
+  }
+
+  .syntax-hilite .syntax em:hover,
+  .syntax-hilite .syntax em:active,
+  .syntax-hilite .syntax em:focus,
+  .syntax-hilite .syntax em:focus-within,
+  .syntax-hilite .syntax em.selected {
+    outline: 0;
+  }
+
+  .syntax-hilite .syntax em:hover::before,
+  .syntax-hilite .syntax em:active::before,
+  .syntax-hilite .syntax em:focus::before,
+  .syntax-hilite .syntax em:focus-within::before,
+  .syntax-hilite .syntax em.selected::before {
+    color: #fff;
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+  .syntax-hilite .syntax em::before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    right: calc(100% + 1.75em);
+    color: #678;
+  }
+
+  .syntax-hilite .syntax em::after {
+    content: ' ';
+    visibility: hidden;
+  }
+
+  .syntax-hilite .syntax i,
+  .syntax-hilite .syntax u,
+  .syntax-hilite .syntax span {
+    font-weight: normal;
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .syntax-hilite .syntax .string,
+  .syntax-hilite .syntax .string * {
+    color: #ffd658;
+  }
+
+  .syntax-hilite .syntax .number {
+    color: #a7c;
+  }
+
+  .syntax-hilite .syntax .js-keyword {
+    color: #859900;
+  }
+
+  .syntax-hilite .syntax .js-command {
+    color: #e68;
+  }
+
+  .syntax-hilite .syntax .js-global {
+    color: #fd971f;
+    font-style: italic;
+  }
+
+  .syntax-hilite .syntax .js-literal {
+    color: #ae81ff;
+  }
+
+  .syntax-hilite .syntax .js-operator {
+    color: #f92672;
+  }
+
+  .syntax-hilite .syntax .js-function {
+    color: #999999;
+  }
+
+  .syntax-hilite .syntax .js-dommethod {
+    color: #7e7;
+  }
+
+  .syntax-hilite .syntax .js-argument,
+  .syntax-hilite .syntax .js-argument * {
+    color: orange;
+  }
+
+  .syntax-hilite .syntax .comment,
+  .syntax-hilite .syntax .comment * {
+    color: lightgrey;
+  }
+
+  .syntax-hilite .syntax .tag {
+    color: olive;
+  }
+
+  .syntax-hilite .syntax .tag i {
+    color: orange;
+  }
+
+  .syntax-hilite .syntax .tag u {
+    color: green;
+  }
+
+  .syntax-hilite .syntax .css-selector {
+    color: brown;
+  }
+
+</style>
+<script>
+    // Function initialization  style in document for the sake of pen JS import 
+    document.addEventListener('DOMContentLoaded', function(e) {
+      syntaxHiliter();
+    }, false);
+    // Vanilla JS / CSS / HTML Syntax Highlighter
+    // Compatibility: IE 9+
+    function syntaxHiliter() {
+      'use strict';
+      var w = window,
+        d = document;
+      // Get DOM Elements to replace:
+      var pres = d.querySelectorAll('.syntax-hilite');
+      for (var i = 0; i < pres.length; i++) {
+        var h = pres[i],
+          input = h.querySelectorAll('.syntax, code, textarea')[0],
+          light = h.className.match(/\blight\b/gi),
+          temp = d.createElement('textarea'),
+          wrap = d.createElement('div');
+        h.parentNode.insertBefore(wrap, h);
+        wrap.appendChild(h);
+        wrap.className = ' syntax-hilite-wrapper';
+        var code = temp.innerHTML = input.innerHTML.trim();
+        if (code.length) {
+          var mirror = d.createElement('code'),
+            btn = d.createElement('a'),
+            toggle = d.createElement('label'),
+            cbx = d.createElement('input'),
+            langs = h.lang;
+          mirror.className = 'syntax';
+          cbx.type = 'checkbox';
+          cbx.className = 'mode';
+          cbx.checked = light;
+          btn.className = 'copy';
+          h.setAttribute('data-content', h.lang);
+          hilite(code, mirror, langs);
+        } else {
+          input.setAttribute('data-empty', input.getAttribute('data-empty') || 'No code to highlight.');
+          input.innerHTML = '';
+        }
+        // Add button / checkbox
+        btn.title = btn.textContent = h.getAttribute('data-select') || 'Select code';
+        btn.href = '#!';
+        btn.onclick = function(e) {
+          selectText(mirror, w);
+        }
+        wrap.appendChild(btn);
+        cbx.type = 'checkbox';
+        cbx.onchange = changeMode;
+        wrap.appendChild(cbx);
+        // Append code to element's parent
+        h.insertBefore(mirror, input);
+      }
+      // Helper
+      function hilite(code, mirror, languages) {
+        var langs = languages.trim().split(' ');
+        // RegEx / root vars for Language syntaxes
+        var strRx1 = /"(.*?)"/g,
+          strRx2 = /'(.*?)'/g,
+          number = /(\d+\.?\d+?)/g,
+          cssComment = /(\/\*.*?\*\/)|(\/\*[\S\s]+?\*\/)/g,
+          jsComment = /(\/\/.*)/g,
+          keyword = /\b(var|let|const|function|this|do|super|as|constructor|instanceof|default)\b/g,
+          command = /\b(typeof|try|catch|finally|delete|switch|case|in|of|if|else|import|from|as|export|extends|new|return|throw|for|while|break|continue|async|await)\b/g,
+          literal = /\b(true|false|null|undefined|NaN|Infinity|\$)(?=[^\w])/g,
+          operator = /([\b\s\[\{\(])([!=]=|[!=]==|\+\+?|--?|\*|\/|&&|\|\||!|<=?|>=?|>>|<<|\.\.\.)(?!span)([\b\s\w])/g,
+          global = /\b(window|document|navigator|console|self|top|process|require|module|define|global|Promise|Array|Math|String|Number|Symbol|Function|Reflect|Proxy|Error)\b/g,
+          functions = /(\w[A-Za-z0-9]*)(?=\()/g,
+          domMethod = /\b(getElementsBy(TagName|ClassName|Name)|getElementById|(get|set|remove)Attribute|querySelector(|All))(?=[^\w])/g,
+          html = /(&lt;!--(?:[^-]|-(?!-&gt;))*--&gt;)|(&lt;(?:(?!&gt;).)+&gt;)/g,
+          css = /([^\r\n,{}]+)(,(?=[^}]*{)|\s*{)/,
+          color = /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/g;
+        // Highlite HTML
+        code = code.replace(html, function(m, c, t) {
+          if (c != null) return '<span class="comment">' + c + '</span>';
+          if (t != null) return '<span class="tag">' + t.replace(/(\s[\w_-]+)+(?:(=)+("[a-z-\s]?")+)?/ig, '<i>$1</i>$2<u>$3</u>') + '</span>';
+        });
+        // Highlite CSS
+
+        // Highlite  JS / CSS linewise
+        var lines = code.split('\n');
+        for (var i = 0; i < lines.length; i++) {
+          var l = lines[i],
+            line = d.createElement('em');
+          //l = l.replace(strRx1,'<span class="string">"$1"</span>');
+          l = l.replace(strRx2, "<span class=\"string\">'$1'</span>");
+          l = l.replace(jsComment, '<span class="comment">$1</span>');
+          l = l.replace(cssComment, '<span class="comment">$1</span>');
+          l = l.replace(css, '<span class="css-selector">$1</span>$2');
+          l = l.replace(number, '<span class="number">$1</span>');
+          l = l.replace(keyword, '<span class="js-keyword">$1</span>');
+          l = l.replace(command, '<span class="js-command">$1</span>');
+          l = l.replace(literal, '<span class="js-literal">$1</span>');
+          l = l.replace(operator, '<span class="js-operator">$1$2$3</span>');
+          l = l.replace(global, '<span class="js-global">$1</span>');
+          l = l.replace(functions, '<span class="js-function">$1</span>');
+          l = l.replace(domMethod, '<span class="js-dommethod">$1</span>');
+          line.innerHTML = l;
+          line.setAttribute('tabindex', 1);
+          line.onclick = function(e) {
+            selectText(this, w);
+            this.focus();
+          };
+          line.onselect = function(e) {
+            this.className += ' selected';
+          };
+          mirror.appendChild(line);
+          line.addEventListener('selectstart', function(e) {
+            var s = d.getElementsByClassName('selected');
+            if (s)
+              for (var i = 0; i < s.length; i++) {
+                s[i].className = s[i].className.trim().replace(/\b(selected)\b/gi, '');
+              }
+          }, false);
+        }
+      }
+      // Switch mode
+      function changeMode(e) {
+        var p = this.parentNode.querySelector('code');
+        this.checked ? p.className += ' light' : p.className = p.className.replace(/\blight\b/gi, ' ').trim();
+      }
+      // Select text range
+      function selectText(el, w) {
+        var sel, range, parent;
+        if (w.getSelection && d.createRange) {
+          sel = w.getSelection();
+          range = d.createRange();
+          range.selectNodeContents(el);
+          sel.removeAllRanges();
+          sel.addRange(range);
+          parent = sel.anchorNode;
+        } else if (d.body.createTextRange) {
+          range = d.body.createTextRange();
+          range.moveToElementText(el);
+          range.select();
+          parent = range.commonAnchestorContainer;
+        }
+      }
+    }
+
+</script>
