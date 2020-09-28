@@ -1,5 +1,5 @@
 //require are npms
-let config = require("./config.json")
+let config = require("./config.json");
 let Discord = require("discord.js");
 let express = require("express");
 let app = express();
@@ -44,14 +44,17 @@ app.post("/new", async (req, res) => {
   let token = config.token;
   const webhookClient = new Discord.WebhookClient(id, token);
   let codee = req.body.code;
-  if(codee.length >= 1000){
-    codee  = codee.substring(0, codee.length - 5) + "..."
+
+  if (codee.length >= 2000) {
+    codee = codee.slice(0, 2000) + (codee.length >= 1000 ? "..." : "");
   }
   let embed = new Discord.MessageEmbed()
-  .setColor("#FF9966")
-  .setTitle(req.body.paste_title)
-  .setDescription(`Language: ${req.body.paste_language}\n Description: ${req.body.description || "No description"}\n\n Code: \`\`\`${codee}\`\`\``)
-  .setFooter("created through website")
+    .setColor("#FF9966")
+    .setTitle(req.body.title)
+    .addField("language", req.body.language, true)
+    .addField("Description", req.body.description || "No description", true)
+    .setDescription(`\`\`\`${codee}\`\`\``)
+    .setFooter("created through website");
   webhookClient.send({
     embeds: [embed]
   });
