@@ -7,11 +7,11 @@
           >Title</label
         >
         <div class="input-group">
-          <input
+          <input 
             type="text"
             class="in form-control bg-dark"
             id="paste_title"
-            name="paste_title"
+            name="title"
             placeholder="Title"
             maxlength="50"
             autocomplete="off"
@@ -20,6 +20,9 @@
         </div>
       </div>
     </div>
+    
+    <br>
+    <br>
     <div class="row">
       <div class="col-sm-5">
         <label for="paste_title" class="text-center" style="color: white;"
@@ -42,8 +45,8 @@
 		
 
 			
-					<label for="paste_language">Syntax Highlighting</label>
-					<select name="paste_language" id="paste_language" data-show-subtext="true" data-live-search="true" class="selectpicker form-control">
+					<label for="paste_language" style="color: white; border: none;">Syntax Highlighting</label>
+					<select name="lang" id="paste_language" data-show-subtext="true" style="color: white;" data-live-search="true" class="selectpicker form-control bg-dark">
 						<option value="text" default>Raw Text</option>
 						<option value="abap">ABAP</option>
 						<option value="actionscript">ActionScript</option>
@@ -324,24 +327,29 @@
   .in {
     border: none;
     color: white;
-    width: 50%;
+  width: 50%;
     margin: 0 auto;
   }
   .in:focus {
     border: 1px solid #ff9966;
     color: white;
-    width: 50%;
+  
     margin: 0 auto;
+    width:100%;
   }
   .area {
     border: none;
     color: white;
+    width:100%;
   }
   .area:focus {
     border: 1px solid #ff9966;
     color: white;
+    width:100%;
   }
   body {
     background-color: rgba(0, 0, 0, 0.9);
   }
+  .selectpicker{
+border: none;}  
 </style>
